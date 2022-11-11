@@ -1,4 +1,4 @@
-package ru.netology.patient;
+package ru.netology.patient.service.medical;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -10,19 +10,15 @@ import ru.netology.patient.entity.BloodPressure;
 import ru.netology.patient.entity.HealthInfo;
 import ru.netology.patient.entity.PatientInfo;
 import ru.netology.patient.repository.PatientInfoFileRepository;
-import ru.netology.patient.service.alert.SendAlertService;
 import ru.netology.patient.service.alert.SendAlertServiceImpl;
-import ru.netology.patient.service.medical.MedicalServiceImpl;
 
 import java.io.File;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
-class MainTest {
+class MedicalServiceImplTest {
 
     PatientInfoFileRepository patientInfoFileRepository = mock(PatientInfoFileRepository.class);
     SendAlertServiceImpl sendAlertService = Mockito.spy(SendAlertServiceImpl.class);
@@ -99,4 +95,5 @@ class MainTest {
         Mockito.verify(sendAlertService, Mockito.times(1)).send("Warning, patient with id: 58c7e023-0704-4f49-93a0-943a6fa833cc, need help");
 
     }
+
 }
